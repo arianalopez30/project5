@@ -1,0 +1,48 @@
+
+#header {
+    background-color:gray;
+    color:white;
+    text-align:center;
+    padding:10px;
+}
+
+#login {
+    background-color:white;
+    color:black;
+    text-align:center;
+    padding:10px;
+    position: absolute;
+    top:30px;
+    right: 20px;
+    border:3px solid gray;
+    background-position: top right;
+    
+    }
+
+a{
+    text-decoration: none;
+
+}
+#nav {
+    line-height:30px;
+    background-color:#eeeeee;
+    height:300px;
+    width:100px;
+    float:left;
+    padding:5px; 
+    text-align:center;
+}
+
+
+#section {
+    width:350px;
+    float:left;
+    padding:10px; 
+}
+#footer {
+    background-color:black;
+    color:white;
+    clear:both;
+    text-align:center;
+    padding:5px; 
+}
