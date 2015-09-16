@@ -14,7 +14,7 @@
 			<a href= '/'> Home </a>
 			</br>
 			{% for c in categories %}
-				<a href= '{{url_for('view_category_items', category_name = c.name)}}'>{{c.name}}</a>
+				<a href= "{{url_for('view_category_items', category_id = c.id)}}">{{c.name}}</a>
 			{% endfor %}
 			<a href= '{{url_for('gdisconnect')}}'>Logout</a>
 

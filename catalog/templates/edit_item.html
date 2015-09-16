@@ -10,10 +10,10 @@
 		<div id="nav">
 		
 			{% for c in categories %}
-				<a href= '{{url_for('view_category_items', category_name = c.name)}}'>{{c.name}}</a>
+				<a href= "{{url_for('view_category_items', category_id = c.id)}}">{{c.name}}</a>
 			{% endfor %}
-			<a href = '{{url_for('gdisconnect')}}'>Logout</a> <br />
-			<a href= '/'> Home </a>
+			<a href = "{{url_for('gdisconnect')}}">Logout</a> <br />
+			<a href= "/"> Home </a>
 
 		</div>	
 
@@ -22,7 +22,7 @@
 	
 			{% for i in categories %}
 				{% if i.id == item.category_id %}
-				<form action="{{url_for('edit_item', category_name = i.name, item_name=item.name)}}" method ='POST'>
+				<form action="{{url_for('edit_item', category_id = i.id, item_id=item.id)}}" method ='POST'>
 				{% endif %}
 			{% endfor %}
 			
@@ -48,7 +48,7 @@
 				<br />
 				<br />
 				<input type='submit' value='Edit'>
-				<a href= '/'>Cancel </a>
+				<a href= "/">Cancel </a>
 			</form>
 
 		</div>	

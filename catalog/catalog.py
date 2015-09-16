@@ -227,14 +227,14 @@ def main():
 #Description: View items based on what category was selected
 #There is a specific page for people logged in and people not logged in
 #-----------------------------------------
-@app.route('/catalog/<category_name>')
-def view_category_items(category_name):
+@app.route('/catalog/<int:category_id>/')
+def view_category_items(category_id):
 	#get all categories for the navigation side
 	categories = session.query(Category).all()
 
 	#get the items tied to the category that was selected
-	category= session.query(Category).filter_by(name = category_name).one()
-	items = session.query(Item).filter_by(category_id = category.id).all()
+	#category= session.query(Category).filter_by(id = category_id).one()
+	items = session.query(Item).filter_by(category_id = category_id).all()
 	if 'username' not in login_session:
 		return render_template('view_category_items.html', categories = categories, items = items)
 	return render_template('category_items.html', categories = categories, items = items)
@@ -265,13 +265,13 @@ def add_item():
 #Description: View a specific item
 #There is a specific page for people logged in and people not logged in
 #-----------------------------------------
-@app.route('/catalog/<category_name>/<item_name>')
-def view_item(category_name, item_name):
+@app.route('/catalog/<int:category_id>/<int:item_id>/')
+def view_item(category_id, item_id):
 	#get all categories for the navigation side
 	categories = session.query(Category).all()
 
 	#get the info on the item that was selected
-	item = session.query(Item).filter_by(name = item_name).one()
+	item = session.query(Item).filter_by(id = item_id).one()
 	if 'username' not in login_session:
 		return render_template('view_item.html', categories = categories, item = item)
 
@@ -281,10 +281,10 @@ def view_item(category_name, item_name):
 #Name: delete_item
 #Description: will delete a specific item
 #-----------------------------------------
-@app.route('/delete/<item_name>', methods=['GET', 'POST'])
-def delete_item(item_name):
+@app.route('/delete/<int:item_id>/', methods=['GET', 'POST'])
+def delete_item(item_id):
     categories = session.query(Category).all()
-    item = session.query(Item).filter_by(name = item_name).one()
+    item = session.query(Item).filter_by(id = item_id).one()
     if request.method == 'POST' and ('username' in login_session) and (item.user_id == login_session['user_id']):
         session.delete(item)
         session.commit()
@@ -301,13 +301,13 @@ def delete_item(item_name):
 #Name: edit_item
 #Description: will edit a specific item
 #-----------------------------------------
-@app.route('/edit/<category_name>/<item_name>', methods=['GET', 'POST'])
-def edit_item(category_name, item_name):
+@app.route('/edit/<category_id>/<item_id>/', methods=['GET', 'POST'])
+def edit_item(category_id, item_id):
 	#get all categories for the navigation side
     categories = session.query(Category).all()
   
 	#get the info on the item that was selected
-    item = session.query(Item).filter_by(name = item_name).one()
+    item = session.query(Item).filter_by(id = item_id).one()
 
     if request.method == 'POST' and ('username' in login_session) and (item.user_id == login_session['user_id']):
         #gets the edit info from the form

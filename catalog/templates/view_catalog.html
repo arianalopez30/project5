@@ -7,7 +7,7 @@
 			<h1>Catalog</h1>
 			
 			<div id="login">
-				<a href='{{url_for('showLogin')}}'>Login </a>
+				<a href="{{url_for('showLogin')}}">Login </a>
 			</div>
 			
 		</div>
@@ -18,7 +18,7 @@
 			<a href= '/'> Home </a>
 			</br>
 			{% for c in categories %}
-				<a href= '{{url_for('view_category_items', category_name = c.name)}}'>{{c.name}}</a>
+				<a href= "{{url_for('view_category_items', category_id = c.id)}}">{{c.name}}</a>
 			{% endfor %}
 
 
@@ -29,7 +29,7 @@
 			{% for i in items %}
 				{% for c in categories %}
 						{% if i.category_id == c.id %}
-						<a href='{{url_for('view_item', category_name = c.name, item_name = i.name)}}'>{{i.name}} <i>({{c.name}})</i>
+						<a href="{{url_for('view_item', category_id = c.id, item_id = i.id)}}">{{i.name}} <i>({{c.name}})</i>
 						{% endif %}
 					{% endfor %}
 				

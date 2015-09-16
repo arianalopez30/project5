@@ -11,12 +11,12 @@
 		
 		<div id="nav">
 		
-			<a href= '/'> Home </a>
+			<a href= "/"> Home </a>
 			</br>
 			{% for c in categories %}
-				<a href= '{{url_for('view_category_items', category_name = c.name)}}'>{{c.name}}</a>
+				<a href= "{{url_for('view_category_items', category_id = c.id)}}">{{c.name}}</a>
 			{% endfor %}
-			<a href= '{{url_for('gdisconnect')}}'>Logout</a>
+			<a href= "{{url_for('gdisconnect')}}">Logout</a>
 
 
 		</div>	
@@ -26,7 +26,7 @@
 			{% for i in items %}
 				{% for c in categories %}
 						{% if i.category_id == c.id %}
-						<a href='{{url_for('view_item', category_name = c.name, item_name = i.name)}}'>{{i.name}}
+						<a href="{{url_for('view_item', category_id = c.id, item_id = i.id)}}">{{i.name}}
 						{% endif %}
 					{% endfor %}
 				
