@@ -5,6 +5,8 @@
 from flask import Flask
 app = Flask(__name__)
 
+from functools import wraps
+
 #importing all database needs
 from flask import Flask, render_template, request, redirect,jsonify, url_for, flash, jsonify
 app = Flask(__name__)
@@ -30,6 +32,18 @@ import requests
 
 CLIENT_ID = json.loads(open('client_secrets.json', 'r').read())['web']['client_id']
 APPLICATION_NAME ="Catalog"
+
+#-----------------------------------------
+#Name: login_required
+#Description: checks to see if user is logged in
+#-----------------------------------------
+def login_required(f):
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        if 'username' not in login_session:
+            return redirect(url_for('main'))
+        return f(*args, **kwargs)
+    return decorated_function
 
 #-----------------------------------------
 #Name: showLogin
@@ -246,6 +260,7 @@ def view_category_items(category_id):
 #Description: adds a new item
 #-----------------------------------------
 @app.route('/add/', methods= ['GET', 'POST'])
+@login_required
 def add_item():
     categories = session.query(Category).all()
     email = login_session['email']
@@ -281,7 +296,8 @@ def view_item(category_id, item_id):
 #Name: delete_item
 #Description: will delete a specific item
 #-----------------------------------------
-@app.route('/delete/<int:item_id>/', methods=['GET', 'POST'])
+@app.route('/delete/<int:item_id>', methods=['GET', 'POST'])
+@login_required
 def delete_item(item_id):
     categories = session.query(Category).all()
     item = session.query(Item).filter_by(id = item_id).one()
@@ -302,6 +318,7 @@ def delete_item(item_id):
 #Description: will edit a specific item
 #-----------------------------------------
 @app.route('/edit/<category_id>/<item_id>/', methods=['GET', 'POST'])
+
 def edit_item(category_id, item_id):
 	#get all categories for the navigation side
     categories = session.query(Category).all()
