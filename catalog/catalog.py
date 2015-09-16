@@ -318,7 +318,7 @@ def delete_item(item_id):
 #Description: will edit a specific item
 #-----------------------------------------
 @app.route('/edit/<category_id>/<item_id>/', methods=['GET', 'POST'])
-
+@login_required
 def edit_item(category_id, item_id):
 	#get all categories for the navigation side
     categories = session.query(Category).all()
