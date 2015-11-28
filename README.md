@@ -30,3 +30,6 @@ Open up the project folder from the command line. Follow these instructions:
 6) To see the json stuff type localhost:8000/catalog/json/
 7) Congrats....I'm done!
 
+=======
+# project5
+Linux Server Configuration - Udacity Project 5
