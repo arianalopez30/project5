@@ -123,6 +123,7 @@ from catalog import app as application
 application.secret_key = 'Superman_is_awesome'
 ```
 #############################
+Create the conf file that apache will use to serve up our app
 ```
 cd /etc/apache2/sites-available
 vi catalog.conf
