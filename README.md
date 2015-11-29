@@ -232,6 +232,7 @@ Software I installed
  Other Sources I used:
  https://www.digitalocean.com/community/tutorials/how-to-deploy-a-flask-application-on-an-ubuntu-vps
  https://discussions.udacity.com/t/p5-how-i-got-through-it/15342
+ http://alex.nisnevich.com/blog/2014/10/01/setting_up_flask_on_ec2.html
  
  Apache2 Notes
  By default, Ubuntu does not allow access through the web browser to any file apart of 
