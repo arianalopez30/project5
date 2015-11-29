@@ -229,7 +229,9 @@ Software I installed
  
  added my ipaddress to the /etc/hosts file for the 127.0.0.1 line
  
- 
+ Other Sources I used:
+ https://www.digitalocean.com/community/tutorials/how-to-deploy-a-flask-application-on-an-ubuntu-vps
+ https://discussions.udacity.com/t/p5-how-i-got-through-it/15342
  
  Apache2 Notes
  By default, Ubuntu does not allow access through the web browser to any file apart of 
