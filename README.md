@@ -224,6 +224,15 @@ Software I installed
  pip install psycopg2 
  pip install --upgrade google-api-python-client
 ``` 
+
+###Stopped Remote login for root
+```
+logged in as root
+vi /etc/ssh/sshd_config
+	PermitRootLogin no
+Saved it
+sudo service ssh restart
+```
  Fixed an error - was getting sudo: unable to resolve host ip-10-20-33-179 
  http://askubuntu.com/questions/59458/error-message-when-i-run-sudo-unable-to-resolve-host-none
  
